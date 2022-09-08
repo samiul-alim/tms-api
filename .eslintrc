@@ -1,0 +1,11 @@
+{
+  "extends": "airbnb-base",
+  "plugins": ["import"],
+  "rules": {
+    "no-unused-vars": "off",
+    "linebreak-style": 0
+  },
+  "env": {
+    "jest": true
+  }
+}
