@@ -14,11 +14,11 @@ const tableName = 'users';
 const User = sequelize.define('User', {
   email: {
     type: Sequelize.STRING,
+    allowNull: false,
     unique: true,
   },
-  password: {
-    type: Sequelize.STRING,
-  },
+  name: { type: Sequelize.STRING, allowNull: false },
+  password: { type: Sequelize.STRING, allowNull: false },
 }, { hooks, tableName });
 
 // eslint-disable-next-line

@@ -1,5 +1,20 @@
+const { body } = require('express-validator');
+
 const privateRoutes = {
-  'GET /users': 'UserController.getAll',
+  'POST /members': {
+    path: 'MemberController.addMember',
+    middlewares: [
+      body('name').notEmpty().withMessage('Name is required'),
+    ],
+  },
+  'GET /members': 'MemberController.getAllMembers',
+  'GET /members/:id': 'MemberController.getMemberById',
+  'PATCH /members/:id': {
+    path: 'MemberController.updateMemberById',
+    middlewares: [
+      body('name').notEmpty().withMessage('Name is required'),
+    ],
+  },
 };
 
 module.exports = privateRoutes;
