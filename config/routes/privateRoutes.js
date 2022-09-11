@@ -15,6 +15,22 @@ const privateRoutes = {
       body('name').notEmpty().withMessage('Name is required'),
     ],
   },
+
+  'POST /tasks': {
+    path: 'TaskController.addTask',
+    middlewares: [
+      body('title').notEmpty().withMessage('Title is required'),
+    ],
+  },
+  'GET /tasks': 'TaskController.getAllTasks',
+  'GET /tasks/:id': 'TaskController.getTaskById',
+  'PATCH /tasks/:id': {
+    path: 'TaskController.updateTaskById',
+    middlewares: [
+      body('title').notEmpty().withMessage('Title is required'),
+    ],
+  },
+
 };
 
 module.exports = privateRoutes;

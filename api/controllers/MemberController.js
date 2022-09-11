@@ -1,4 +1,4 @@
-const Member = require('../models/member');
+const Member = require('../models/Member');
 const { validationResult } = require('express-validator');
 
 const MemberController = () => {

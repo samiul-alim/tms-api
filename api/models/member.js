@@ -14,12 +14,9 @@ const Member = sequelize.define('Member', {
 // eslint-disable-next-line
 Member.prototype.toJSON = function () {
   const values = Object.assign({}, this.get());
-
-  delete values.password;
-
   return values;
 };
 
-Member.belongsTo(User, { foreignKey: { key: 'id', name: 'userId', allowNull: false } });
+Member.belongsTo(User, { onDelete: 'CASCADE', foreignKey: { key: 'id', name: 'userId', allowNull: false } });
 
 module.exports = Member;
