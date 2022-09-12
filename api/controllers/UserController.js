@@ -9,8 +9,7 @@ const UserController = () => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
-    }
-    if (body.password === body.password2) {
+    } else if (body.password === body.password2) {
       try {
         const user = await User.create({
           name: body.name,
@@ -28,8 +27,7 @@ const UserController = () => {
           return res.status(500).json({ msg: 'Internal server error' });
         }
       }
-    }
-    return res.status(400).json({ msg: 'Bad Request: Passwords don\'t match' });
+    } else return res.status(400).json({ msg: 'Bad Request: Passwords don\'t match' });
   };
 
   const login = async (req, res) => {

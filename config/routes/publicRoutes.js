@@ -7,6 +7,7 @@ const publicRoutes = {
       body('name').notEmpty().withMessage('Name is required'),
       body('email').isEmail().withMessage('Provide a valid email'),
       body('password').notEmpty().withMessage('Password is required'),
+      body('password2').notEmpty().withMessage('Password2 is required'),
     ],
   },
   'POST /login': {
