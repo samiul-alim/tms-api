@@ -52,19 +52,30 @@ const MemberController = () => {
       const [updated] = await Member.update({ name }, {
         where: { id, userId },
       });
-      return updated === 0 ? res.status(403).json({ success: false, msg: 'Member not found' }) : res.status(200).json({ success: true });
+      return updated === 0 ? res.status(404).json({ success: false, msg: 'Member not found' }) : res.status(200).json({ success: true });
     } catch (err) {
       console.log(err);
       return res.status(500).json({ msg: 'Internal server error' });
     }
   };
 
+  const deleteMemberById = async (req, res) => {
+    try {
+      const { params: { id }, userId } = req;
+      const deleted = await Member.destroy({ where: { id, userId } });
+      return deleted === 0 ? res.status(404).json({ success: false, msg: 'Member not found' }) : res.status(204).json({ success: true });
+    } catch (err) {
+      console.log(err);
+      return res.status(500).json({ msg: 'Internal server error' });
+    }
+  };
 
   return {
     addMember,
     getMemberById,
     getAllMembers,
     updateMemberById,
+    deleteMemberById,
   };
 };
 

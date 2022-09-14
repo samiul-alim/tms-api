@@ -15,6 +15,7 @@ const privateRoutes = {
       body('name').notEmpty().withMessage('Name is required'),
     ],
   },
+  'DELETE /members/:id': 'MemberController.deleteMemberById',
 
   'POST /tasks': {
     path: 'TaskController.addTask',
@@ -30,6 +31,7 @@ const privateRoutes = {
       body('title').notEmpty().withMessage('Title is required'),
     ],
   },
+  'DELETE /tasks/:id': 'TaskController.deleteTaskById',
 
 };
 

@@ -22,10 +22,9 @@ const UserController = () => {
       } catch (err) {
         console.log(err);
         if (err.name === 'SequelizeUniqueConstraintError') {
-          res.status(403).send({ status: 'error', msg: 'Email already exists' });
-        } else {
-          return res.status(500).json({ msg: 'Internal server error' });
+          return res.status(403).send({ status: 'error', msg: 'Email already exists' });
         }
+        return res.status(500).json({ msg: 'Internal server error' });
       }
     } else return res.status(400).json({ msg: 'Bad Request: Passwords don\'t match' });
   };
